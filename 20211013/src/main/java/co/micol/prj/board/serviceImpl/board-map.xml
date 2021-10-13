@@ -1,18 +1,19 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
-<mapper namespace="co.micol.prj.board.serviceImpl.Boardmapper">
+<mapper namespace="co.micol.prj.board.service.BoardMapper">
 	<select id="boardSelectList"
 		resultType="co.micol.prj.board.service.BoardVO">
 		select * from board
+		<!--  board에 있는 모든 데이터들을 다 가져오세요. -->
 	</select>
 
 	<select id="boardSelect"
 		resultType="co.micol.prj.board.service.BoardVO">
-		select * from board where bid = #{bid}
+		select * from board where bid = #{bId}
 	</select>
 
-	<insert id="boardInsert">
-		parameterType = "co.micol.prj.board.service.BoardVO"
+	<insert id="boardInsert"
+		parameterType = "co.micol.prj.board.service.BoardVO">
 		insert into board
 		values(b_squ.nextval,#{bWriter},sysdate,#{bTitle},#{bContents},0)
 	</insert>
@@ -34,3 +35,6 @@
 	</update>
 
 </mapper>
+
+<!-- 이친구 = 실제로 실행될 SQL문들을 저장시키는 곳이에요.
+이 파일은 mybaits.xml 파일이영 ㅑ해요. -->
