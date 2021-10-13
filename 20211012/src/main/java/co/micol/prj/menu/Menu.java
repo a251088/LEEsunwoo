@@ -19,7 +19,7 @@ import co.micol.prj.member.serviceImpl.MemberUpdate;
 public class Menu {
 	private Scanner sc = new Scanner(System.in);
 	private Map<String, Command> map = new HashMap<String, Command>();
-
+	
 	public Menu() { //생성될때 명령 실행그룹 map 구조 만들기.
 		map.put("boardList", new BoardList());
 		map.put("boardSelect", new BoardSelect());
@@ -158,4 +158,4 @@ public class Menu {
 
 	}
 
-}
+} //class end
