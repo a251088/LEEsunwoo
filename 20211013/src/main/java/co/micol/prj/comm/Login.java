@@ -21,6 +21,7 @@ public class Login {
 			if (member != null) {
 				GB.NAME = member.getName();
 				GB.AUTHOR = member.getAuthor();
+				GB.ID = member.getId();  // 14일 오전 수정.  
 				b = true;
 			} else {
 				System.out.println("!!! 사용자 아이디 또는 패스워드가 틀렸다!!");

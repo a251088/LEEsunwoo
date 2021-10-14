@@ -18,7 +18,7 @@
 	<mappers>
 		<mapper resource="co/micol/prj/board/serviceImpl/board-map.xml" /> <!-- board table -->
 		<mapper resource="co/micol/prj/member/serviceImpl/member-map.xml"/> <!-- member table -->
-
+		
 	</mappers>
 </configuration>
 

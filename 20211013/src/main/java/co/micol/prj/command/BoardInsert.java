@@ -15,7 +15,7 @@ public class BoardInsert implements Command {
 		System.out.println("***********************");
 		System.out.println("작성자를 입력하세요");
 		board.setBContents(GB.sc.nextLine());
-		board = boardDao.boardInsert(board);
+		
 		
 		
 	}
