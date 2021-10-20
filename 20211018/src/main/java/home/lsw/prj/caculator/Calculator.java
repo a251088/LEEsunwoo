@@ -12,7 +12,6 @@ import javax.swing.JFrame;
 import javax.swing.JPanel;
 import javax.swing.JTextField;
 
-
 public class Calculator extends JFrame {
 
 	private JTextField inputSpace;
@@ -81,13 +80,16 @@ public class Calculator extends JFrame {
 				if (!inputSpace.getText().equals("") && !prev_operation.equals("+") && !prev_operation.equals("-")
 						&& !prev_operation.equals("×") && !prev_operation.equals("÷")) {
 					inputSpace.setText(inputSpace.getText() + e.getActionCommand());
-					
+
 				}
 
-			}else if(operation.equals("←")){	
-							
+			} else if (operation.equals("←")) {
+				String text = inputSpace.getText().trim();
+				if (!text.equals("")) {
+					inputSpace.setText(text.substring(0, text.length() - 1));
+				}
 			}
-			
+
 			else {
 				inputSpace.setText(inputSpace.getText() + e.getActionCommand());
 
@@ -102,7 +104,7 @@ public class Calculator extends JFrame {
 		for (int i = 0; i < inputText.length(); i++) {
 			char ch = inputText.charAt(i);
 
-			if (ch == '-' | ch == '+' | ch == '÷' | ch == '×') {
+			if (ch == '-' || ch == '+' || ch == '÷' || ch == '×') {
 				equation.add(num);
 				num = "";
 				equation.add(ch + "");
@@ -120,7 +122,9 @@ public class Calculator extends JFrame {
 		double current = 0;
 		String mode = "";
 
-		for (String s : equation) {
+		for (int i = 0; i < equation.size(); i++) {
+			String s = equation.get(i);
+
 			if (s.equals("+")) {
 				mode = "sum";
 			} else if (s.equals("-")) {
@@ -130,19 +134,45 @@ public class Calculator extends JFrame {
 			} else if (s.equals("÷")) {
 				mode = "div";
 			} else {
+				if ((mode.equals("mul") || mode.equals("div")) && !s.equals("+") && !s.equals("-") && !s.equals("×")
+						&& !s.equals("÷")) {
+					Double one = Double.parseDouble(equation.get(i - 2));
+					Double two = Double.parseDouble(equation.get(i));
+					Double result = 0.0;
+					
+					
+
+				if (mode.equals("mul")) {
+					result = one * two;
+				} else if (mode.equals("div")) {
+					result = one / two;
+				}
+
+				equation.add(i + 1, Double.toString(result));
+
+				for (int j = 0; j < 3; j++) {
+					equation.remove(i - 2);
+				}
+				i -= 2;
+				}
+			}
+		}
+		for (String s : equation) {
+			if (s.equals("+")) {
+				mode = "sum";
+			} else if (s.equals("-")) {
+				mode = "sub";
+			} else {
 				current = Double.parseDouble(s);
-				if (mode == "sum") {
+				if (mode.equals("sum")) {
 					prev = prev + current;
-				} else if (mode == "sub") {
+				} else if (mode.equals("sub")) {
 					prev = prev - current;
-				} else if (mode == "mul") {
-					prev = prev * current;
-				} else if (mode == "div") {
-					prev = prev / current;
 				} else {
 					prev = current;
 				}
 			}
+			prev = Math.round(prev * 100000) / 100000.0;
 
 		}
 		return prev;
