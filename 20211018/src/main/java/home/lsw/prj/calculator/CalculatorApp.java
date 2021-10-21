@@ -1,4 +1,4 @@
-package home.lsw.prj.caculator;
+package home.lsw.prj.calculator;
 
 public class CalculatorApp {
 	public static void main(String[] args) {

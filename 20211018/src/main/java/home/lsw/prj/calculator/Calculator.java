@@ -1,4 +1,4 @@
-package home.lsw.prj.caculator;
+package home.lsw.prj.calculator;
 
 import java.awt.Color;
 import java.awt.Font;
@@ -33,7 +33,7 @@ public class Calculator extends JFrame {
 		buttonPanel.setLayout(new GridLayout(5, 4, 10, 10));
 		buttonPanel.setBounds(8, 120, 290, 270);
 
-		String button_names[] = { "C", "←", "÷", "×", "7", "8", "9", "-", "4", "5", "6", "+", "1", "2", "3", "=", "0",
+		String button_names[] = { "C", "←", "÷", "×", "7", "8", "9", "+", "4", "5", "6", "-", "1", "2", "3", "=", "0",
 				"." };
 		JButton buttons[] = new JButton[button_names.length];
 
